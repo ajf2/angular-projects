@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { LibraryComponent } from './library.component';
+import { RomanNumeralsPipe } from './roman/roman-numerals.pipe';
 
 @NgModule({
-  declarations: [LibraryComponent],
+  declarations: [LibraryComponent, RomanNumeralsPipe],
   imports: [
   ],
-  exports: [LibraryComponent]
+  exports: [LibraryComponent, RomanNumeralsPipe]
 })
 export class LibraryModule { }
