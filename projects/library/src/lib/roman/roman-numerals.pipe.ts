@@ -31,7 +31,12 @@ export class RomanNumeralsPipe implements PipeTransform {
   }
 
   private subtractiveRomanNumerals(value: number): string {
-    return 'MCMXCVII';
+    return this.basicRomanNumerals(value)
+      .replace('VIIII', 'IX')
+      .replace('IIII', 'IV')
+      .replace('LXXXX', 'XC')
+      .replace('XXXX', 'XL')
+      .replace('DCCCC', 'CM')
+      .replace('CCCC', 'CD');
   }
-
 }
