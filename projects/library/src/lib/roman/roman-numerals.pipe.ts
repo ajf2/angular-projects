@@ -9,12 +9,24 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class RomanNumeralsPipe implements PipeTransform {
 
   /**
-   * Converts a number into Roman numerals.
+   * Converts a number into Roman numerals. Only supports positive integers.
    * @param value The number to convert.
    * @param notation Use either basic (e.g. VIIII) or subtractive (e.g. IX) notation.
    * Subtractive is the default.
    */
   transform(value: number, notation?: 'basic' | 'subtractive'): string {
+    if (value > 3999) {
+      throw new Error('RomanNumeralsPipe cannot convert numbers over 3,999.');
+    }
+    if (value < 0) {
+      throw new Error('RomanNumeralsPipe cannot convert negative numbers.');
+    }
+    if (value === 0) {
+      throw new Error('RomanNumeralsPipe cannot convert zero.');
+    }
+    if (!Number.isInteger(value)) {
+      throw new Error('RomanNumeralsPipe cannot convert fractional numbers.');
+    }
     if (notation === 'basic') {
       return this.basicRomanNumerals(value);
     } else {
