@@ -14,4 +14,26 @@ describe('RomanNumeralsPipe', () => {
   it('transforms 1997 with basic notation', () => {
     expect(pipe.transform(1997, 'basic')).toBe('MDCCCCLXXXXVII');
   });
+
+  it("doesn't mutate value", () => {
+    var value = 1997;
+    pipe.transform(value);
+    expect(value).toBe(1997);
+  });
+
+  it('throws an error on values over 3,999', () => {
+    expect(() => pipe.transform(4000)).toThrow();
+  });
+
+  it('throws an error on negative values', () => {
+    expect(() => pipe.transform(-10)).toThrow();
+  });
+
+  it('throws an error on zero values', () => {
+    expect(() => pipe.transform(0)).toThrow();
+  });
+
+  it('throws an error on fractional values', () => {
+    expect(() => pipe.transform(Math.PI)).toThrow();
+  });
 });
