@@ -1,12 +1,12 @@
 import { RomanNumeralsPipe } from './roman-numerals.pipe';
 
 describe('RomanNumeralsPipe', () => {
+  const pipe = new RomanNumeralsPipe();
+
   it('creates an instance', () => {
-    const pipe = new RomanNumeralsPipe();
     expect(pipe).toBeTruthy();
   });
 
-  const pipe = new RomanNumeralsPipe();
   it('transforms 1997', () => {
     expect(pipe.transform(1997)).toBe('MCMXCVII');
   });
