@@ -6,8 +6,12 @@ describe('RomanNumeralsPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
+  const pipe = new RomanNumeralsPipe();
   it('transforms 1997', () => {
-    const pipe = new RomanNumeralsPipe();
     expect(pipe.transform(1997)).toBe('MCMXCVII');
+  });
+
+  it('transforms 1997 with basic notation', () => {
+    expect(pipe.transform(1997, 'basic')).toBe('MDCCCCLXXXXVII');
   });
 });
