@@ -11,4 +11,5 @@ export interface MRData {
   series: string;
   total: number;
   url: string;
+  xmlns: string;
 }
