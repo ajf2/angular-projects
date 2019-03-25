@@ -13,5 +13,6 @@ jobs:
           key: angular-projects-{{ .Branch }}-{{ checksum "package-lock.json" }}
           paths:
             - "node_modules"
-      - run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-      - run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+      # Just test the library project for now.
+      - run: npm run test -- library --no-watch --no-progress --browsers=ChromeHeadlessCI
+      #- run: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
