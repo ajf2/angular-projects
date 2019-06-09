@@ -7,68 +7,73 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./cors-test.component.scss']
 })
 export class CorsTestComponent implements OnInit {
-  thisServerUrl = 'http://192.168.213.132/CorsTestApi/api';
-  crossOriginServerUrl = 'http://192.168.213.133/CorsTestApi/api';
+  localProtocol = 'http';
+  localPort = 80;
+  localPath = ''
+  remoteProtocol = 'https';
+  remotePort = 443;
+  remoteHost = '192.168.213.133';
+  remotePath = 'CorsTestApi'
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
-  tryGet() {
-    this.http.get(`${this.thisServerUrl}/values/1`).subscribe(
+  tryLocalGet() {
+    this.http.get(`${this.localProtocol}://localhost:${this.localPort}/${this.localPath}/api/values/1`).subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryCrossOriginGet() {
-    this.http.get(`${this.crossOriginServerUrl}/values/1`).subscribe(
+  tryLocalPut() {
+    this.http.put(`${this.localProtocol}://localhost:${this.localPort}/${this.localPath}/api/values/1`, '').subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryPut() {
-    this.http.put(`${this.thisServerUrl}/values/1`, '').subscribe(
+  tryLocalPost() {
+    this.http.post(`${this.localProtocol}://localhost:${this.localPort}/${this.localPath}/api/values/1`, '').subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryCrossOriginPut() {
-    this.http.put(`${this.crossOriginServerUrl}/values/1`, '').subscribe(
+  tryLocalDelete() {
+    this.http.delete(`${this.localProtocol}://localhost:${this.localPort}/${this.localPath}/api/values/1`).subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryPost() {
-    this.http.post(`${this.thisServerUrl}/values`, '').subscribe(
+  tryRemoteGet() {
+    this.http.get(`${this.remoteProtocol}://${this.remoteHost}:${this.remotePort}/${this.remotePath}/api/values/1`).subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryCrossOriginPost() {
-    this.http.post(`${this.crossOriginServerUrl}/values`, '').subscribe(
+  tryRemotePut() {
+    this.http.put(`${this.remoteProtocol}://${this.remoteHost}:${this.remotePort}/${this.remotePath}/api/values/1`, '').subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryDelete() {
-    this.http.delete(`${this.thisServerUrl}/values/1`).subscribe(
+  tryRemotePost() {
+    this.http.post(`${this.remoteProtocol}://${this.remoteHost}:${this.remotePort}/${this.remotePath}/api/values/1`, '').subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
-  tryCrossOriginDelete() {
-    this.http.delete(`${this.crossOriginServerUrl}/values/1`).subscribe(
+  tryRemoteDelete() {
+    this.http.delete(`${this.remoteProtocol}://${this.remoteHost}:${this.remotePort}/${this.remotePath}/api/values/1`).subscribe(
       () => console.log('success'),
       () => console.log('fail')
-    )
+    );
   }
 
 }

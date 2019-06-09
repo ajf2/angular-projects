@@ -1,10 +1,19 @@
 <h1>CORS Test</h1>
 
-<button (click)="tryGet()">Test GET to this server</button>
-<button (click)="tryCrossOriginGet()">Test GET to other server</button>
-<button (click)="tryPut()">Test PUT to this server</button>
-<button (click)="tryCrossOriginPut()">Test PUT to other server</button>
-<button (click)="tryPost()">Test POST to this server</button>
-<button (click)="tryCrossOriginPost()">Test POST to other server</button>
-<button (click)="tryDelete()">Test DELETE to this server</button>
-<button (click)="tryCrossOriginDelete()">Test DELETE to other server</button>
+<h3>Local URL</h3>
+<input type="text" [(ngModel)]="localProtocol">://localhost:<input type="number" [(ngModel)]="localPort">/<input
+  type="text" [(ngModel)]="localPath">/api/values/1
+<button (click)="tryLocalGet()">Test GET to localhost</button>
+<button (click)="tryLocalPut()">Test PUT to localhost</button>
+<button (click)="tryLocalPost()">Test POST to localhost</button>
+<button (click)="tryLocalDelete()">Test DELETE to localhost</button>
+<hr>
+
+<h3>Remote URL</h3>
+<input type="text" [(ngModel)]="remoteProtocol">://<input type="text" [(ngModel)]="remoteHost">:<input type="number"
+  [(ngModel)]="remotePort">/<input type="text" [(ngModel)]="remotePath">/api/values/1
+<button (click)="tryRemoteGet()">Test GET to remote web API</button>
+<button (click)="tryRemotePut()">Test PUT to remote web API</button>
+<button (click)="tryRemotePost()">Test POST to remote web API</button>
+<button (click)="tryRemoteDelete()">Test DELETE to remote web API</button>
+<hr>
